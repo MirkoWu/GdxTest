@@ -16,3 +16,4 @@ rootProject.name = "GdxTest"
 include ':app'
 include ':core'
 include ':html'
+include ':desktop'

@@ -10,33 +10,36 @@
 
 buildscript {
     repositories {
-       // mavenLocal()
+        mavenLocal()
         mavenCentral()
         gradlePluginPortal()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://jitpack.io" }
         google()
     }
     dependencies {
         classpath 'org.wisepersist:gwt-gradle-plugin:1.1.16'
         classpath 'org.gretty:gretty:3.0.7'
         classpath 'com.android.tools.build:gradle:7.0.4'
+//        classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.16'
 
 
     }
 }
 
 allprojects {
-   // apply plugin: "eclipse"
+    // apply plugin: "eclipse"
 
     version = '1.0'
     ext {
-        appName = "MyGDXGame"
+        appName = "My GDX Game"
         gdxVersion = '1.11.0'
         roboVMVersion = '2.3.16'
         box2DLightsVersion = '1.5'
         ashleyVersion = '1.7.4'
         aiVersion = '1.8.2'
         gdxControllersVersion = '2.2.1'
+        webSocketVersion = '1.9.10.3'
     }
 
     repositories {

@@ -28,8 +28,10 @@ public class Drop extends ApplicationAdapter {
     private Rectangle bucket;
     private Array<Rectangle> raindrops;
     private long lastDropTime;
-    public static final int B_SIZE=72;
-    public static final int D_SIZE=48;
+    public static final int B_SIZE = 72;
+    public static final int D_SIZE = 48;
+    public static final int SCREEN_WIDTH = 1200;
+    public static final int SCREEN_HEIGHT = 900;
 
     @Override
     public void create() {
@@ -48,13 +50,13 @@ public class Drop extends ApplicationAdapter {
 
         //camera
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 800, 480);
+        camera.setToOrtho(false, SCREEN_WIDTH, SCREEN_HEIGHT);
         batch = new SpriteBatch();
 
 
         //bucket rect
         bucket = new Rectangle();
-        bucket.x = 800 / 2 - B_SIZE / 2;
+        bucket.x = SCREEN_WIDTH / 2 - B_SIZE / 2;
         bucket.y = 20;
         bucket.width = B_SIZE;
         bucket.height = B_SIZE;
@@ -66,8 +68,8 @@ public class Drop extends ApplicationAdapter {
 
     private void spawnRaindrop() {
         Rectangle raindrop = new Rectangle();
-        raindrop.x = MathUtils.random(0, 800 - D_SIZE);
-        raindrop.y = 480;
+        raindrop.x = MathUtils.random(0, SCREEN_WIDTH - D_SIZE);
+        raindrop.y = SCREEN_HEIGHT;
         raindrop.width = D_SIZE;
         raindrop.height = D_SIZE;
         raindrops.add(raindrop);
@@ -106,7 +108,7 @@ public class Drop extends ApplicationAdapter {
         }
         //阈值
         if (bucket.x < 0) bucket.x = 0;
-        if (bucket.x > 800 - B_SIZE) bucket.x = 800 - B_SIZE;
+        if (bucket.x > SCREEN_WIDTH - B_SIZE) bucket.x = SCREEN_WIDTH - B_SIZE;
         //刷新
         if (TimeUtils.nanoTime() - lastDropTime > 1000000000) spawnRaindrop();
 
