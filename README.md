@@ -1,18 +1,28 @@
 ### libgdx 使用Android Studio开发
 生成工具用的是eclips插件，不太习惯，而且重要的是，有些java的类无法导包，
-虽然不影响编译，但是比较编写比较难受，所以改成了目前默认的路径配置
+虽然不影响编译，但是编写比较难受，所以改成了目前默认的路径配置
 
 ### 使用gdx-setup.jar（根目录下） 初始化项目
 
 
 ### android
 ```
-//多配置一个assets路径，将项目下的assets路径作为指向，方面多端公用
+//多配置一个assets路径，将项目下的assets路径作为指向，方面多端共用
 sourceSets {
         main {
             assets.srcDirs = ['../assets']
         }
     }
+```
+
+### desktop
+```
+//这个不要了，本身就是正确的
+//sourceSets.main.java.srcDirs = [ "src/" ]
+
+//改为实际对应的包名
+project.ext.mainClassName = "com.mirkowu.desktop.DesktopLauncher"
+
 ```
 
 ### html
@@ -21,8 +31,9 @@ sourceSets {
 ```
 //改为java路径
 src = files(sourceSets.main.java.srcDirs)
-//下面的module路径也要对应时间路径
+//下面的module路径也要对应实际路径
 ```
+
 
 
 ### 参考文档
